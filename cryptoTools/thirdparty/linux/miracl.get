@@ -1,0 +1,10 @@
+#!/bin/bash 
+
+set -e
+
+if [ ! -e miracl/miracl/source/libmiracl.a ]
+then
+    echo "building Mircal"
+    cd miracl/miracl/source/
+    bash linux64
+fi
