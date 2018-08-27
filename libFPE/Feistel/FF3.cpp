@@ -48,7 +48,7 @@ namespace osuCrypto
 			//std::cout << "printArrU8(B, v); printArrU8(revB, v);: " << std::endl; printArrU8(B, v); printArrU8(revB, v);
 			int numRadixRevB = NumRadix(revB, v, radix);
 
-			block idxBlock = _mm_setr_epi8(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, i, 0, 0, 0);
+			block idxBlock = _mm_setr_epi8(0, 0, 0, i, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 			//std::cout << "idxBlock: " << idxBlock << std::endl;
 
 			block blkP = ZeroBlock;
@@ -60,7 +60,7 @@ namespace osuCrypto
 			auto bytes = to_bytes(numRadixRevB);
 
 			block blkNum = ZeroBlock;
-			int j = 0;
+			int j = 4; //shift 4 bytes
 			for (u8 b : bytes) //stupid copy...
 			{
 				memcpy((u8*)&blkNum + j, &b, 1);
@@ -139,7 +139,7 @@ namespace osuCrypto
 			//printArrU8(A, u); printArrU8(revA, u);
 			int numRadixRevA = NumRadix(revA, u, radix);
 
-			block idxBlock = _mm_setr_epi8(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, i, 0, 0, 0);
+			block idxBlock = _mm_setr_epi8(0, 0, 0, i, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 			//std::cout << "dd idxBlock: " << idxBlock << std::endl;
 
 			block blkP = ZeroBlock;
@@ -151,7 +151,7 @@ namespace osuCrypto
 			const auto bytes = to_bytes(numRadixRevA);
 
 			block blkNum = ZeroBlock;
-			int j = 0;
+			int j = 4; //shift 4 bytes
 			for (u8 b : bytes) //stupid copy...
 			{
 				memcpy((u8*)&blkNum + j, &b, 1);
