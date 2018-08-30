@@ -28,8 +28,8 @@ namespace osuCrypto
 
 		u8* A = new u8[u]; u8* B = new u8[v];
 		u8* TL = new u8[32 / 8]; u8* TR = new u8[32 / 8]; //bit representation
-		memcpy(A, plainText, u * sizeof(BYTE)); //A=X[1...u]
-		memcpy(B, plainText + u, v * sizeof(BYTE)); //B=X[u+1...n]
+		memcpy(A, plainText, u); //A=X[1...u]
+		memcpy(B, plainText + u, v); //B=X[u+1...n]
 		memcpy(TL, tweak, 32 / 8); //first 32 bits
 		memcpy(TR, tweak + 32 / 8, 32 / 8); //2nd 32 bits
 		//std::cout << toBlock(TL) << "\t" << toBlock(TR) << std::endl;
@@ -48,7 +48,7 @@ namespace osuCrypto
 			//std::cout << "printArrU8(B, v); printArrU8(revB, v);: " << std::endl; printArrU8(B, v); printArrU8(revB, v);
 			int numRadixRevB = NumRadix(revB, v, radix);
 
-			block idxBlock = _mm_setr_epi8(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, i, 0, 0, 0);
+			block idxBlock = _mm_setr_epi8(0, 0, 0, i, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 			//std::cout << "idxBlock: " << idxBlock << std::endl;
 
 			block blkP = ZeroBlock;
@@ -60,7 +60,7 @@ namespace osuCrypto
 			auto bytes = to_bytes(numRadixRevB);
 
 			block blkNum = ZeroBlock;
-			int j = 0;
+			int j = 4; //shift 4 bytes
 			for (u8 b : bytes) //stupid copy...
 			{
 				memcpy((u8*)&blkNum + j, &b, 1);
@@ -104,8 +104,8 @@ namespace osuCrypto
 			B = C;
 		}
 
-		memcpy(cipherText, A, u * sizeof(BYTE)); //A=X[1...u]
-		memcpy(cipherText + u, B, v * sizeof(BYTE)); //B=X[u+1...n]
+		memcpy(cipherText, A, u); //A=X[1...u]
+		memcpy(cipherText + u, B, v); //B=X[u+1...n]
 
 		return cipherText;
 	}
@@ -118,8 +118,8 @@ namespace osuCrypto
 		u8* A = new u8[u]; u8* B = new u8[v];
 		u8* TL = new u8[32 / 8]; u8* TR = new u8[32 / 8]; //bit representation
 
-		memcpy(A, cipherText, u * sizeof(BYTE)); //A=X[1...u]
-		memcpy(B, cipherText + u, v * sizeof(BYTE)); //B=X[u+1...n]
+		memcpy(A, cipherText, u ); //A=X[1...u]
+		memcpy(B, cipherText + u, v ); //B=X[u+1...n]
 		memcpy(TL, tweak, 32 / 8); //first 32 bits
 		memcpy(TR, tweak + 32 / 8, 32 / 8); //2nd 32 bits
 		//std::cout << toBlock(TL) << "\t dd \t" << toBlock(TR) << std::endl;
@@ -139,7 +139,7 @@ namespace osuCrypto
 			//printArrU8(A, u); printArrU8(revA, u);
 			int numRadixRevA = NumRadix(revA, u, radix);
 
-			block idxBlock = _mm_setr_epi8(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, i, 0, 0, 0);
+			block idxBlock = _mm_setr_epi8(0, 0, 0, i, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 			//std::cout << "dd idxBlock: " << idxBlock << std::endl;
 
 			block blkP = ZeroBlock;
@@ -151,7 +151,7 @@ namespace osuCrypto
 			const auto bytes = to_bytes(numRadixRevA);
 
 			block blkNum = ZeroBlock;
-			int j = 0;
+			int j = 4; //shift 4 bytes
 			for (u8 b : bytes) //stupid copy...
 			{
 				memcpy((u8*)&blkNum + j, &b, 1);
@@ -194,8 +194,8 @@ namespace osuCrypto
 			A = C;
 		}
 
-		memcpy(plainText, A, u * sizeof(BYTE)); //A=X[1...u]
-		memcpy(plainText + u, B, v * sizeof(BYTE)); //B=X[u+1...n]
+		memcpy(plainText, A, u ); //A=X[1...u]
+		memcpy(plainText + u, B, v ); //B=X[u+1...n]
 
 		return plainText;
 	}

@@ -55,8 +55,8 @@ endif()
 #############################################
 #    Build cryptoTools (common utilities)   #
 #############################################
-#include_directories(cryptoTools)
-add_subdirectory(libOTe/cryptoTools)
+include_directories(cryptoTools)
+add_subdirectory(cryptoTools)
 
 
 #############################################

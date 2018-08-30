@@ -6,12 +6,16 @@
 #                 Link Boost                #
 #############################################
 
+find_library(
+  Boost_LIBRARIES 
+  NAMES Boost  
+  HINTS "${BOOST_ROOT}/boost")
 
 set(Boost_USE_STATIC_LIBS        ON) # only find static libs
 set(Boost_USE_MULTITHREADED      ON)
 set(Boost_USE_STATIC_RUNTIME     ON)
 
-find_package(Boost  COMPONENTS system thread)
+find_package(Boost COMPONENTS system thread)
 
 if(Boost_FOUND)
   message( "Found Boost at ${Boost_LIBRARIES}")
@@ -50,4 +54,4 @@ add_library(libFPE ${SRCS})
 target_include_directories(libFPE PUBLIC ${Boost_INCLUDE_DIR}) 
 target_include_directories(libFPE PUBLIC ${CMAKE_SOURCE_DIR}/libFPE) 
 
-target_link_libraries(libFPE  ${cryptoTools_LIB} ${MIRACL_LIB}  ${Boost_LIBRARIES})
+target_link_libraries(libFPE cryptoTools ${MIRACL_LIB}  ${Boost_LIBRARIES})

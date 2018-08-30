@@ -74,7 +74,7 @@ install(TARGETS cryptoTools DESTINATION lib)
 ## Miracl
 ###########################################################################
 
-set(Miracl_Dirs "${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/linux/miracl/")
+set(Miracl_Dirs "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/linux/miracl/")
 
 set(Miracl_Lib_Dirs "${Miracl_Dirs}/miracl/source/")
 find_library(MIRACL_LIB NAMES miracl  HINTS "${Miracl_Lib_Dirs}")
@@ -103,7 +103,7 @@ INSTALL(FILES ${MIRACL_LIB} DESTINATION lib)
 ## Boost
 ###########################################################################
 
-set(BOOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/linux/boost/")
+set(BOOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/linux/boost/")
 
 set(Boost_USE_STATIC_LIBS        ON) # only find static libs
 set(Boost_USE_MULTITHREADED      ON)
