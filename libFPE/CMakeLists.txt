@@ -50,4 +50,4 @@ add_library(libFPE ${SRCS})
 target_include_directories(libFPE PUBLIC ${Boost_INCLUDE_DIR}) 
 target_include_directories(libFPE PUBLIC ${CMAKE_SOURCE_DIR}/libFPE) 
 
-target_link_libraries(libFPE  ${cryptoTools_LIB} ${MIRACL_LIB}  ${Boost_LIBRARIES})
+target_link_libraries(libFPE cryptoTools ${MIRACL_LIB}  ${Boost_LIBRARIES})
