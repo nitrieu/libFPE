@@ -6,12 +6,13 @@
 #                 Link Boost                #
 #############################################
 
+set(BOOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/linux/boost/")
 
 set(Boost_USE_STATIC_LIBS        ON) # only find static libs
 set(Boost_USE_MULTITHREADED      ON)
 set(Boost_USE_STATIC_RUNTIME     ON)
 
-find_package(Boost  COMPONENTS system thread)
+find_package(Boost COMPONENTS system thread)
 
 if(Boost_FOUND)
   message( "Found Boost at ${Boost_LIBRARIES}")
