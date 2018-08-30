@@ -6,7 +6,10 @@
 #                 Link Boost                #
 #############################################
 
-set(BOOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/linux/boost/")
+find_library(
+  Boost_LIBRARIES 
+  NAMES Boost  
+  HINTS "${BOOST_ROOT}/boost")
 
 set(Boost_USE_STATIC_LIBS        ON) # only find static libs
 set(Boost_USE_MULTITHREADED      ON)
