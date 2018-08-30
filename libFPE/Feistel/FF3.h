@@ -6,7 +6,7 @@ Brief:  https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-38g.pd
 */
 
 #pragma once
-#include "FpeUtils.h"
+#include "libFPE/FpeUtils.h"
 #include <cryptoTools/Common/Log.h>
 #include <cryptoTools/Crypto/PRNG.h>
 #include <thread>

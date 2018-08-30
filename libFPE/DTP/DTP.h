@@ -6,7 +6,7 @@ Brief:
 */
 
 #pragma once
-#include "FpeUtils.h"
+#include "libFPE/FpeUtils.h"
 #include <cryptoTools/Common/Log.h>
 #include <cryptoTools/Crypto/PRNG.h>
 #include <thread>
