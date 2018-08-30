@@ -28,8 +28,8 @@ namespace osuCrypto
 
 		u8* A = new u8[u]; u8* B = new u8[v];
 		u8* TL = new u8[32 / 8]; u8* TR = new u8[32 / 8]; //bit representation
-		memcpy(A, plainText, u * sizeof(BYTE)); //A=X[1...u]
-		memcpy(B, plainText + u, v * sizeof(BYTE)); //B=X[u+1...n]
+		memcpy(A, plainText, u); //A=X[1...u]
+		memcpy(B, plainText + u, v); //B=X[u+1...n]
 		memcpy(TL, tweak, 32 / 8); //first 32 bits
 		memcpy(TR, tweak + 32 / 8, 32 / 8); //2nd 32 bits
 		//std::cout << toBlock(TL) << "\t" << toBlock(TR) << std::endl;
@@ -104,8 +104,8 @@ namespace osuCrypto
 			B = C;
 		}
 
-		memcpy(cipherText, A, u * sizeof(BYTE)); //A=X[1...u]
-		memcpy(cipherText + u, B, v * sizeof(BYTE)); //B=X[u+1...n]
+		memcpy(cipherText, A, u); //A=X[1...u]
+		memcpy(cipherText + u, B, v); //B=X[u+1...n]
 
 		return cipherText;
 	}
@@ -118,8 +118,8 @@ namespace osuCrypto
 		u8* A = new u8[u]; u8* B = new u8[v];
 		u8* TL = new u8[32 / 8]; u8* TR = new u8[32 / 8]; //bit representation
 
-		memcpy(A, cipherText, u * sizeof(BYTE)); //A=X[1...u]
-		memcpy(B, cipherText + u, v * sizeof(BYTE)); //B=X[u+1...n]
+		memcpy(A, cipherText, u ); //A=X[1...u]
+		memcpy(B, cipherText + u, v ); //B=X[u+1...n]
 		memcpy(TL, tweak, 32 / 8); //first 32 bits
 		memcpy(TR, tweak + 32 / 8, 32 / 8); //2nd 32 bits
 		//std::cout << toBlock(TL) << "\t dd \t" << toBlock(TR) << std::endl;
@@ -194,8 +194,8 @@ namespace osuCrypto
 			A = C;
 		}
 
-		memcpy(plainText, A, u * sizeof(BYTE)); //A=X[1...u]
-		memcpy(plainText + u, B, v * sizeof(BYTE)); //B=X[u+1...n]
+		memcpy(plainText, A, u ); //A=X[1...u]
+		memcpy(plainText + u, B, v ); //B=X[u+1...n]
 
 		return plainText;
 	}
