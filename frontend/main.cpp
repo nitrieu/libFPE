@@ -30,12 +30,14 @@ void FF3_Sample()
 	block userKey = _mm_set_epi64x(12345678, 1234567);
 	int radix = 10, len = 16;
 	FF3 ff3(userKey);
-
-	u8* plainText = ByteArray(prng.get<block>());;//TODO: contains 2 plaintexts (64 bits each)
+		
+	block blkPlaintext = prng.get<block>();
+	u8* plainText = ByteArray(blkPlaintext);;//TODO: contains 2 plaintexts (64 bits each)
 	for (int i = 0; i < len; i++)
 		plainText[i] = plainText[i] % radix; //get radix domain => TODO: reuse another 4 first bits of each byte
 
-	u8* tweak = ByteArray(prng.get<block>());
+	block blkTweak = prng.get<block>();
+	u8* tweak = ByteArray(blkTweak);
 	u8* cipherText = ff3.encrypt(plainText, tweak, len, radix);
 	u8* decryptText = ff3.decrypt(cipherText, tweak, len, radix);
 
