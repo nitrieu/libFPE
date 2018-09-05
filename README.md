@@ -6,7 +6,7 @@ A fast and portable C++ library for Format Preserving Encryption which currently
 ## Installations
 
 ### Required libraries
- C++ compiler with C++14 support. There are several library dependencies including [`Boost`](https://sourceforge.net/projects/boost/), [`Miracl`](https://github.com/miracl/MIRACL). Our code has been tested on both Windows (Microsoft Visual Studio) and Linux. To install the required libraries: 
+ C++ compiler with C++14 support. There are several library dependencies including [`Boost`](https://sourceforge.net/projects/boost/), [`Miracl`](https://github.com/miracl/MIRACL), [`cryptoTools`](https://github.com/ladnir/cryptoTools). Our code has been tested on both Windows (Microsoft Visual Studio) and Linux. To install the required libraries: 
   * windows: open PowerShell,  `cd ./cryptoTools/thirdparty/win`, and `.\getBoost.ps1`  `.\getMiracl.ps1`
   * linux: `cd ./cryptoTools/thirdparty/linux`, and `bash all.get`.   
 
