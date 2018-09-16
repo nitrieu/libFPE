@@ -14,7 +14,8 @@ A fast and portable C++ library for Format Preserving Encryption which currently
 ### Building the Project
 After cloning project from git,
 ##### Windows:
-1. build cryptoTools and libFPE in order.
+1. build cryptoTools and libFPE in order (cd `libFPE/cryptoTools/thirdparty/linux/`, `bash all.get`, `cd ../../../ && cmake . && make`, `cd .. && cmake . && make`
+
 2. main project is `frontend` 
 3. run `frontend` project
  
