@@ -113,12 +113,14 @@ set(Boost_USE_STATIC_RUNTIME     ON)
 
 find_package(Boost COMPONENTS system thread)
 
-if(NOT Boost_FOUND)
-    message(FATAL_ERROR "Failed to find boost at " ${Boost_Lib_Dirs} " Need system thread")
+if(Boost_FOUND)
+  message( "Found Boost at ${Boost_LIBRARIES}")
+else()
+   message(FATAL_ERROR "Failed to find boost at " ${Boost_Lib_Dirs} " Need system thread")
 endif()
 
 
-#MESSAGE(STATUS "boost ---  ${Boost_LIBRARIES}")
+MESSAGE(STATUS "boostvvvv ---  ${Boost_LIBRARIES}")
 #include_directories(${Boost_INCLUDE_DIR}) 
 
 target_include_directories(cryptoTools PUBLIC ${Boost_INCLUDE_DIR}) 
