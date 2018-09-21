@@ -105,11 +105,13 @@ INSTALL(FILES ${MIRACL_LIB} DESTINATION lib)
 
 set(BOOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../thirdparty/linux/boost/")
 
+set(BOOST_Lib_Dirs "${BOOST_ROOT}/boost/")
+
 set(Boost_USE_STATIC_LIBS        ON) # only find static libs
 set(Boost_USE_MULTITHREADED      ON)
 set(Boost_USE_STATIC_RUNTIME     ON)
 
-find_package(Boost COMPONENTS system thread)
+find_package(Boost COMPONENTS system thread HINTS "${BOOST_Lib_Dirs}")
 
 if(NOT Boost_FOUND)
     message(FATAL_ERROR "Failed to find boost at " ${Boost_Lib_Dirs} " Need system thread")

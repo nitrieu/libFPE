@@ -10,6 +10,12 @@ set(Boost_USE_STATIC_LIBS        ON) # only find static libs
 set(Boost_USE_MULTITHREADED      ON)
 set(Boost_USE_STATIC_RUNTIME     ON)
 
+
+find_library(
+  MIRACL_LIB 
+  NAMES miracl  
+  HINTS "${Miracl_Dirs}/miracl/source/")
+
 find_package(Boost  COMPONENTS system thread)
 
 if(Boost_FOUND)
